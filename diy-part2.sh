@@ -31,6 +31,7 @@ echo '
 CONFIG_PACKAGE_adguardhome=y
 CONFIG_PACKAGE_babeld=y
 CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_bind-dig=y
 CONFIG_PACKAGE_bird2=y
 CONFIG_PACKAGE_bird2c=y
 CONFIG_PACKAGE_dnscrypt-proxy2=y

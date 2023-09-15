@@ -37,4 +37,4 @@ git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 svn export https://github.com/sbwml/luci-app-mosdns/trunk/luci-app-mosdns package/luci-app-mosdns
 svn export https://github.com/sbwml/luci-app-mosdns/trunk/mosdns package/mosdns
 svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
+svn export https://github.com/immortalwrt/luci/branches/openwrt-23.05/applications/luci-app-eqos package/luci-app-eqos
