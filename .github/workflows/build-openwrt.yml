@@ -1,4 +1,4 @@
-name: Build iStore OS
+name: Build OpenWRT
 
 on:
   repository_dispatch:
@@ -9,10 +9,10 @@ on:
         required: false
         default: 'false'
   schedule:
-   - cron: 29 23 * * 5
+   - cron: 59 0 * * 6
 
 env:
-  REPO_URL: https://github.com/istoreos/istoreos
+  REPO_URL: https://github.com/coolsnowwolf/lede
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
@@ -28,13 +28,11 @@ jobs:
     strategy:
       matrix:
         REPO_BRANCH:
-          # - main
-          - istoreos-22.03
-          #- istoreos-23.05
+          - main
         ARCHITECTURE:
           #- rk33xx
-          - rk35xx
-          #- x86
+          #- rk35xx
+          - x86
 
       fail-fast: false
 

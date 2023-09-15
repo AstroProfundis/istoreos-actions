@@ -1,0 +1,38 @@
+name: Cleanup Releases
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+  schedule:
+   - cron: 59 7 * * 6
+
+env:
+  TZ: Asia/Tokyo
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: 准备完成
+      uses: actions/checkout@main
+
+    - name: 删除运行记录
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        keep_minimum_runs: 5
+        token: ${{ secrets.ACCESS_TOKEN }}
+
+    - name: 删除自动发布的旧固件
+      uses: dev-drprasad/delete-older-releases@v0.2.1
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        keep_latest: 3
+        delete_tags: true
