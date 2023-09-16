@@ -9,7 +9,7 @@ on:
         required: false
         default: 'false'
   schedule:
-   - cron: 59 7 * * 6
+   - cron: 59 22 * * 5
 
 env:
   TZ: Asia/Tokyo
