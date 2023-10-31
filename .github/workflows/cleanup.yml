@@ -25,7 +25,8 @@ jobs:
     - name: 删除运行记录
       uses: GitRML/delete-workflow-runs@main
       with:
-        keep_minimum_runs: 5
+        keep_minimum_runs: 3
+        retain_days: 45
         token: ${{ secrets.ACCESS_TOKEN }}
 
     - name: 删除自动发布的旧固件
