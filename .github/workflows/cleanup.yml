@@ -14,6 +14,10 @@ on:
 env:
   TZ: Asia/Tokyo
 
+permissions:
+  actions: write
+  contents: write
+
 jobs:
   cleanup:
     runs-on: ubuntu-22.04
@@ -27,13 +31,11 @@ jobs:
       with:
         keep_minimum_runs: 3
         retain_days: 45
-        token: ${{ secrets.ACCESS_TOKEN }}
 
     - name: 删除自动发布的旧固件
-      uses: dev-drprasad/delete-older-releases@v0.2.1
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      uses: dev-drprasad/delete-older-releases@v0.3.2
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        keep_latest: 3
+        keep_latest: 4
         delete_tags: true
